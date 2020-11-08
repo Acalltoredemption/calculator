@@ -1,0 +1,18 @@
+.calcbutton {
+
+    padding: 8px;
+    background-color: white;
+    border: 8px solid black;
+    border-radius: 15%;
+
+}
+.calcbutton:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+
+.calcbutton {
+    color: blue;
+    font-size: 40px;
+}
