@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './calculator-display.css';
 
-const CalculatorDisplay = () => (
 
+
+class CalculatorDisplay extends Component {
+
+
+
+render(){
+
+return(
 <div className='calcdisplay'>
- <span className='calcitems'>TEST</span>
+ <span className='calcitems'>{this.props.display}</span>
 </div>
-
 );
+}
+};
+
 
 
 

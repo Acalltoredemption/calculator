@@ -4,12 +4,17 @@ import './calculator-button.css';
 
 class  calculatorButton extends Component {
 
+
+
+
+
     number = ''
     render() {
         return(
-        <div className='calcbutton'>
+        <div className='calcbutton' onClick={this.props.onClick}>
 
-        <span className='calcnumber'>{this.props.number}</span>
+        <span className='calcnumber' >{this.props.number}</span>
+        
 
 
 
@@ -17,6 +22,9 @@ class  calculatorButton extends Component {
         );
     };
     };
+
+
+
 
 
 
