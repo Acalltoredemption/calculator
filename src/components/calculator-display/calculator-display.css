@@ -2,7 +2,8 @@
     background-color: white;
     border: 8px solid black;
     width: 40%;
-    height: 50%;
+    height: 40px;
     margin: auto;
     color: blue;
+    display: true;
 }

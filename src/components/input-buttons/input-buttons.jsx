@@ -7,7 +7,7 @@ class  InputButton extends Component {
     number = ''
     render() {
         return(
-        <div className='inputbutton'>
+        <div className='inputbutton' onClick={this.props.onClick}>
 
         <span className='inputnumber'>{this.props.number}</span>
 

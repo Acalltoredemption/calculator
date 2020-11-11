@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './calculator-body.css';
 import CalculatorButton from '../calculator-button/calculator-button';
 import CalculatorDisplay from '../calculator-display/calculator-display';
-
+import InputButton from '../input-buttons/input-buttons';
 
 
 
@@ -11,14 +11,53 @@ class calculatorBody extends Component {
     constructor(props) {
         super(props);
         this.state = {
-         displayNum : '2',
+         displayNum : '0',
+         firstNum : 0,
+         secondNum: 0,
+         thirdNum: 0,
+         fourthNum: 0,
         };
     };
         updateDisplay(number){
+            if(this.state.displayNum === '0'){
             this.setState({displayNum: number});
-         console.log('hello');
+            } else if (this.state.displayNum !== '0') {
+                this.setState({displayNum: "" + this.state.displayNum + number});
+       
+            }
       };
-    
+        addNumbers(){
+        this.state.firstNum = this.state.displayNum;
+        this.setState({displayNum: ''});
+        return console.log(this.state.firstNum);
+        };
+        getAnswer(){
+            if(this.state.firstNum !== 0){
+            this.state.secondNum = this.state.displayNum;
+            this.setState({displayNum: parseFloat(this.state.firstNum) + parseFloat(this.state.secondNum)});
+            this.setState({secondNum: 0});
+            this.setState({firstNum: 0});
+            } else {
+            this.state.fourthNum = this.state.displayNum;
+            this.setState({displayNum: parseFloat(this.state.thirdNum) - parseFloat(this.state.fourthNum)});
+            this.setState({thirdNum: 0});
+            this.setState({fourthNum: 0});
+            }
+           }
+        clearDisplay(){
+            this.setState({secondNum: 0});
+            this.setState({firstNum: 0});
+            this.setState({thirdNum: 0});
+            this.setState({fourthNum: 0});
+            this.setState({displayNum: '0'});
+        }
+        subtractNumbers(){
+            this.state.thirdNum = this.state.displayNum;
+            this.setState({displayNum: ''});
+            return console.log(this.state.thirdNum);
+        }
+
+
 
 
 
@@ -30,7 +69,8 @@ return(
 <h2>Justin's Calculator</h2>
 <CalculatorDisplay display={this.state.displayNum} />
 </div>
-<div className='calcbody'>
+<div className='calc-control'>
+<div className='calcbody'>  
 <CalculatorButton type='button' number='1' onClick={() => this.updateDisplay(1)} />
 <CalculatorButton number='2' onClick={() => this.updateDisplay(2)} />
 <CalculatorButton number='3' onClick={() => this.updateDisplay(3)} />
@@ -41,8 +81,16 @@ return(
 <CalculatorButton number='8' onClick={() => this.updateDisplay(8)} />
 <CalculatorButton number='9' onClick={() => this.updateDisplay(9)} />
 <CalculatorButton number='0' onClick={() => this.updateDisplay(0)} />
-
 </div>
+<div className='inputs'>
+ <InputButton number='+' onClick={() => this.addNumbers()}/>
+ <InputButton number='-' onClick={() => this.subtractNumbers()}/>
+ <InputButton number='Clear' onClick={() => this.clearDisplay()} />
+ <InputButton number='=' onClick={() => this.getAnswer()} />
+</div>
+</div>
+
+
 </div>
 )}
 
