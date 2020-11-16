@@ -5,9 +5,10 @@ import CalculatorDisplay from '../calculator-display/calculator-display';
 import InputButton from '../input-buttons/input-buttons';
 
 
-
-
 class calculatorBody extends Component {
+
+
+
     constructor(props) {
         super(props);
         this.state = {
@@ -79,18 +80,14 @@ class calculatorBody extends Component {
             this.state.divNum = this.state.displayNum;
             this.setState({displayNum: ''});
             return console.log(this.state.divNum);
-        }
-
-
-
-
+        };
 
 
 render(){
 return(
 <div>
 <div className="display">
-<h2>Justin's Calculator</h2>
+<h3>Justin's Calculator</h3>
 <CalculatorDisplay display={this.state.displayNum} />
 </div>
 <div className='calc-control'>
@@ -112,7 +109,8 @@ return(
  <InputButton number='*' onClick={() => this.multNumbers()} />
  <InputButton number='/' onClick={() => this.divNumbers()} />
  <InputButton number='Clear' onClick={() => this.clearDisplay()} />
- <InputButton number='=' onClick={() => this.getAnswer()} />
+
+ <InputButton number='=' className='equals' onClick={() => this.getAnswer()} />
 
 </div>
 </div>

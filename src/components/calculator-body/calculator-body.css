@@ -6,7 +6,7 @@
 .calcbody {
     padding: 20px;
     display: grid;
-  grid-template-columns: 250px 250px 250px;
+  grid-template-columns: 200px 200px 200px;
     
 }
 .inputs {
@@ -20,5 +20,5 @@ grid-template-rows: 100px 100px;
 
 .calc-control {
   display: inline-grid;
-  grid-template-columns: 60vw 30vw;
+  grid-template-columns: 38vw 30vw;
 }
