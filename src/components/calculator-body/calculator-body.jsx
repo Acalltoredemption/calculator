@@ -16,6 +16,8 @@ class calculatorBody extends Component {
          secondNum: 0,
          thirdNum: 0,
          fourthNum: 0,
+         multNum: 0,
+         divNum: 0,
         };
     };
         updateDisplay(number){
@@ -37,24 +39,46 @@ class calculatorBody extends Component {
             this.setState({displayNum: parseFloat(this.state.firstNum) + parseFloat(this.state.secondNum)});
             this.setState({secondNum: 0});
             this.setState({firstNum: 0});
-            } else {
+            } else if(this.state.thirdNum !== 0) {
             this.state.fourthNum = this.state.displayNum;
             this.setState({displayNum: parseFloat(this.state.thirdNum) - parseFloat(this.state.fourthNum)});
             this.setState({thirdNum: 0});
             this.setState({fourthNum: 0});
+            } else if(this.state.multNum !== 0) {
+                this.state.secondNum = this.state.displayNum;
+                this.setState({displayNum: parseFloat(this.state.multNum) * parseFloat(this.state.secondNum)});
+                this.setState({multNum: 0});
+                this.setState({secondNum: 0});
+            } else if (this.state.divNum !== 0){
+                this.state.secondNum = this.state.displayNum;
+                this.setState({displayNum: parseFloat(this.state.divNum) / parseFloat(this.state.secondNum)});
+                this.setState({secondNum: 0});
+                this.setState({divNum: 0});
             }
-           }
+           };
         clearDisplay(){
             this.setState({secondNum: 0});
             this.setState({firstNum: 0});
             this.setState({thirdNum: 0});
             this.setState({fourthNum: 0});
+            this.setState({multNum: 0});
+            this.setState({divNum: 0});
             this.setState({displayNum: '0'});
         }
         subtractNumbers(){
             this.state.thirdNum = this.state.displayNum;
             this.setState({displayNum: ''});
             return console.log(this.state.thirdNum);
+        }
+        multNumbers(){
+            this.state.multNum = this.state.displayNum;
+            this.setState({displayNum: ''});
+            return console.log(this.state.multNum);
+        }
+        divNumbers(){
+            this.state.divNum = this.state.displayNum;
+            this.setState({displayNum: ''});
+            return console.log(this.state.divNum);
         }
 
 
@@ -85,8 +109,11 @@ return(
 <div className='inputs'>
  <InputButton number='+' onClick={() => this.addNumbers()}/>
  <InputButton number='-' onClick={() => this.subtractNumbers()}/>
+ <InputButton number='*' onClick={() => this.multNumbers()} />
+ <InputButton number='/' onClick={() => this.divNumbers()} />
  <InputButton number='Clear' onClick={() => this.clearDisplay()} />
  <InputButton number='=' onClick={() => this.getAnswer()} />
+
 </div>
 </div>
 
